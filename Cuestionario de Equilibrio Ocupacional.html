@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoevaluación de Equilibrio Ocupacional - UA Temuco</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 650px; background: #fff; margin: auto; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        h1 { font-size: 1.4em; text-align: center; color: #1e3a8a; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: 0.85em; color: #64748b; margin-bottom: 20px; }
+        
+        .selector-box { text-align: center; margin-bottom: 20px; padding: 15px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .selector-btn { padding: 10px 18px; margin: 5px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-est { background-color: #2563eb; color: white; }
+        .btn-prof { background-color: #0d9488; color: white; }
+        .selector-btn:hover { opacity: 0.9; }
+
+        .form-section { display: none; }
+        .active-form { display: block; }
+
+        .question { margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; }
+        .question p { font-weight: 600; color: #1e293b; margin-bottom: 8px; font-size: 0.95em; }
+        label { display: block; margin: 6px 0; cursor: pointer; font-size: 0.9em; color: #334155; }
+        input[type="radio"] { margin-right: 8px; }
+
+        .submit-btn { width: 100%; padding: 12px; color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-submit-est { background-color: #2563eb; }
+        .btn-submit-prof { background-color: #0d9488; }
+
+        #result { margin-top: 20px; padding: 18px; border-radius: 8px; display: none; }
+        .verde { background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+        .amarillo { background-color: #fefce8; border: 1px solid #fef08a; color: #854d0e; }
+        .rojo { background-color: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+        .section-title { font-weight: bold; margin-top: 12px; margin-bottom: 4px; text-transform: uppercase; font-size: 0.8em; letter-spacing: 0.5px; }
+        .tips-list { margin: 6px 0; padding-left: 18px; }
+        .tips-list li { margin-bottom: 4px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Cuestionario de Equilibrio Ocupacional</h1>
+    <p class="subtitle">Semana del Autocuidado y Bienestar UA | Terapia Ocupacional UA sede Temuco</p>
+
+    <div class="selector-box">
+        <p style="margin: 0 0 10px 0; font-weight: 600;">Selecciona tu perfil para comenzar:</p>
+        <button class="selector-btn btn-est" onclick="mostrarFormulario('estudiante')">Soy Estudiante</button>
+        <button class="selector-btn btn-prof" onclick="mostrarFormulario('profesional')">Soy Docente / Funcionario</button>
+    </div>
+
+    <!-- FORMULARIO ESTUDIANTES -->
+    <form id="formEstudiante" class="form-section">
+        <div class="question">
+            <p>1. ¿Cómo percibes tu calidad de sueño en las últimas dos semanas?</p>
+            <label><input type="radio" name="e1" value="3" required> Buena, duermo entre 7-8 hrs y siento descanso reparador.</label>
+            <label><input type="radio" name="e1" value="2"> Regular, me cuesta conciliar o despierto con cansancio.</label>
+            <label><input type="radio" name="e1" value="1"> Mala, duermo muy poco y siento agotamiento continuo.</label>
+        </div>
+        <div class="question">
+            <p>2. ¿Logras mantener espacios para el ocio, hobbies o tiempo libre?</p>
+            <label><input type="radio" name="e2" value="3" required> Sí, reservo tiempo para mis intereses personales regularmente.</label>
+            <label><input type="radio" name="e2" value="2"> Rara vez, solo si logro terminar todos los pendientes.</label>
+            <label><input type="radio" name="e2" value="1"> No, he suspendido todo lo ajeno al estudio.</label>
+        </div>
+        <div class="question">
+            <p>3. ¿Cómo evalúas tu capacidad para organizarte y rendir académica o laboralmente?</p>
+            <label><input type="radio" name="e3" value="3" required> Buena, logro priorizar y avanzar a mi ritmo.</label>
+            <label><input type="radio" name="e3" value="2"> Variable, procrastino o me cuesta concentrarme a ratos.</label>
+            <label><input type="radio" name="e3" value="1"> Muy baja, me siento sobrepasado/a o con bloqueos constantes.</label>
+        </div>
+        <div class="question">
+            <p>4. ¿Mantienes espacios de interacción social sin hablar de la universidad?</p>
+            <label><input type="radio" name="e4" value="3" required> Frecuentemente comparto con mis amigos, pareja o familia.</label>
+            <label><input type="radio" name="e4" value="2"> Ocasionalmente, pero la conversación suele derivar en los exámenes.</label>
+            <label><input type="radio" name="e4" value="1"> Me he aislado significativamente del entorno social.</label>
+        </div>
+        <div class="question">
+            <p>5. ¿Con qué frecuencia experimentas malestar físico asociado al estrés?</p>
+            <label><input type="radio" name="e5" value="3" required> Casi nunca o de manera muy leve.</label>
+            <label><input type="radio" name="e5" value="2"> En días específicos de entregas o exámenes.</label>
+            <label><input type="radio" name="e5" value="1"> De forma casi continua en la semana.</label>
+        </div>
+        <button type="button" class="submit-btn btn-submit-est" onclick="evaluarTest('estudiante')">Obtener Resultado Estudiante</button>
+    </form>
+
+    <!-- FORMULARIO PROFESIONALES -->
+    <form id="formProfesional" class="form-section">
+        <div class="question">
+            <p>1. ¿Cómo gestionas la desconexión del trabajo fuera de tu jornada laboral?</p>
+            <label><input type="radio" name="p1" value="3" required> Logro desconectarme totalmente al finalizar mi jornada.</label>
+            <label><input type="radio" name="p1" value="2"> Reviso o respondo mensajes ocasionalmente por la noche/fin de semana.</label>
+            <label><input type="radio" name="p1" value="1"> Continúo trabajando o pensando en pendientes fuera del horario.</label>
+        </div>
+        <div class="question">
+            <p>2. ¿Con qué frecuencia realizas pausas activas durante la jornada laboral?</p>
+            <label><input type="radio" name="p2" value="3" required> Habitualmente, hago breves pausas para moverme o estirarme.</label>
+            <label><input type="radio" name="p2" value="2"> Solo cuando me siento muy cansado/a o tengo espacio entre tareas.</label>
+            <label><input type="radio" name="p2" value="1"> Casi nunca, permanezco sentado/a o frente a la pantalla de corrido.</label>
+        </div>
+        <div class="question">
+            <p>3. ¿Cómo evalúas tu nivel de energía al finalizar la jornada laboral?</p>
+            <label><input type="radio" name="p3" value="3" required> Con fatiga normal, pero con energía para mis actividades personales.</label>
+            <label><input type="radio" name="p3" value="2"> Con agotamiento moderado que limita mis pasatiempos o vida social.</label>
+            <label><input type="radio" name="p3" value="1"> Con agotamiento extremo / sensación de "drenaje" que me impide actuar.</label>
+        </div>
+        <div class="question">
+            <p>4. ¿Logras reservar tiempo en la semana para ocio, ejercicio o descanso reparador?</p>
+            <label><input type="radio" name="p4" value="3" required> Sí, mantengo espacios personales protegidos en mi agenda.</label>
+            <label><input type="radio" name="p4" value="2"> Rara vez, postergo mis intereses por atender pendientes laborales.</label>
+            <label><input type="radio" name="p4" value="1"> No, mi rutina está completamente absorbida por la demanda laboral.</label>
+        </div>
+        <div class="question">
+            <p>5. ¿Con qué frecuencia experimentas tensión corporal o irritabilidad laboral?</p>
+            <label><input type="radio" name="p5" value="3" required> Casi nunca o muy esporádicamente.</label>
+            <label><input type="radio" name="p5" value="2"> En momentos puntuales de alta exigencia o cierres de procesos.</label>
+            <label><input type="radio" name="p5" value="1"> De forma casi diaria o persistente durante la semana.</label>
+        </div>
+        <button type="button" class="submit-btn btn-submit-prof" onclick="evaluarTest('profesional')">Obtener Resultado Profesional</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function mostrarFormulario(tipo) {
+    document.getElementById('formEstudiante').classList.remove('active-form');
+    document.getElementById('formProfesional').classList.remove('active-form');
+    document.getElementById('result').style.display = 'none';
+
+    if (tipo === 'estudiante') {
+        document.getElementById('formEstudiante').classList.add('active-form');
+    } else {
+        document.getElementById('formProfesional').classList.add('active-form');
+    }
+}
+
+function evaluarTest(tipo) {
+    const formId = tipo === 'estudiante' ? 'formEstudiante' : 'formProfesional';
+    const form = document.getElementById(formId);
+    const prefix = tipo === 'estudiante' ? 'e' : 'p';
+    let total = 0;
+    let respondidas = 0;
+
+    for (let i = 1; i <= 5; i++) {
+        const q = form.elements[prefix + i];
+        if (q && q.value) {
+            total += parseInt(q.value);
+            respondidas++;
+        }
+    }
+
+    if (respondidas < 5) {
+        alert('Por favor responde las 5 preguntas antes de continuar.');
+        return;
+    }
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+
+    if (tipo === 'estudiante') {
+        if (total >= 13) {
+            resultDiv.className = 'verde';
+            resultDiv.innerHTML = `
+                <h3>🟢 Nivel: Equilibrio Funcional (${total}/15 pts)</h3>
+                <p>Tu distribución ocupacional te permite afrontar la exigencia académica protegiendo tus áreas de salud y descanso.</p>
+                <div class="section-title">Estrategias de Mantenimiento:</div>
+                <ul class="tips-list">
+                    <li><strong>Protege tus límites:</strong> Mantén fijos tus horarios de sueño y desconexión los fines de semana.</li>
+                    <li><strong>Pausas de calidad:</strong> Realiza pausas de estudio libres de pantallas.</li>
+                    <li><strong>Monitoreo continuo:</strong> Revisa tu rutina semanalmente para prevenir sobrecargas en exámenes.</li>
+                </ul>`;
+        } else if (total >= 9) {
+            resultDiv.className = 'amarillo';
+            resultDiv.innerHTML = `
+                <h3>🟡 Nivel: Alerta Moderada (${total}/15 pts)</h3>
+                <p>Se observan señales de desequilibrio. Estás postergando áreas personales para cubrir la demanda académica.</p>
+                <div class="section-title">Tips Prácticos:</div>
+                <ul class="tips-list">
+                    <li><strong>Matriz de Priorización:</strong> Divide tareas en Urgentes e Importantes. Delega lo secundario.</li>
+                    <li><strong>Ocio No Negociable:</strong> Agenda 30 minutos diarios para un pasatiempo o descanso real.</li>
+                    <li><strong>Higiene del Sueño:</strong> Apaga pantallas 30 minutos antes de acostarte.</li>
+                </ul>`;
+        } else {
+            resultDiv.className = 'rojo';
+            resultDiv.innerHTML = `
+                <h3>🔴 Nivel: Sobrecarga Ocupacional (${total}/15 pts)</h3>
+                <p>Tus niveles de estrés están impactando tu salud. Es momento de realizar una pausa estratégica.</p>
+                <div class="section-title">Acciones Inmediatas:</div>
+                <ul class="tips-list">
+                    <li><strong>Pausa de Emergencia:</strong> Interrumpe el estudio 1 hora para una actividad reguladora (respiración, caminata).</li>
+                    <li><strong>Red de Apoyo:</strong> Habla con un compañero, docente o servicio de salud estudiantil.</li>
+                    <li><strong>Metas Realistas:</strong> Reduce la lista diaria a un máximo de 2 pendientes prioritarios.</li>
+                </ul>`;
+        }
+    } else {
+        if (total >= 13) {
+            resultDiv.className = 'verde';
+            resultDiv.innerHTML = `
+                <h3>🟢 Nivel: Balanza Ocupacional Sostenible (${total}/15 pts)</h3>
+                <p>Tus hábitos te permiten responder a la demanda laboral manteniendo límites claros con tu vida personal.</p>
+                <div class="section-title">Estrategias de Mantenimiento:</div>
+                <ul class="tips-list">
+                    <li><strong>Desconexión Digital:</strong> Sigue respetando el cierre de jornada sin revisar correo laboral.</li>
+                    <li><strong>Higiene Postural:</strong> Haz micro-estiramientos de columna entre reuniones o clases.</li>
+                    <li><strong>Modelaje de Bienestar:</strong> Promover límites saludables inspira una cultura de autocuidado en la sede.</li>
+                </ul>`;
+        } else if (total >= 9) {
+            resultDiv.className = 'amarillo';
+            resultDiv.innerHTML = `
+                <h3>🟡 Nivel: Riesgo de Desgaste Ocupacional (${total}/15 pts)</h3>
+                <p>Hay interferencia de las demandas laborales sobre tus espacios de descanso o vida personal.</p>
+                <div class="section-title">Recomendaciones:</div>
+                <ul class="tips-list">
+                    <li><strong>Cierre Digital:</strong> Evita revisar correos institucionales después de las 19:00 hrs.</li>
+                    <li><strong>Pausas Visuales:</strong> Aplica la regla 20-20-20 frente a la pantalla para reducir fatiga.</li>
+                    <li><strong>Gestión de Agenda:</strong> Deja 10 minutos libres entre compromisos para respirar y despejarte.</li>
+                </ul>`;
+        } else {
+            resultDiv.className = 'rojo';
+            resultDiv.innerHTML = `
+                <h3>🔴 Nivel: Sobrecarga y Exposición a Burnout (${total}/15 pts)</h3>
+                <p>Tu nivel de fatiga requiere acciones preventivas inmediatas para resguardar tu bienestar integral.</p>
+                <div class="section-title">Pasos Prioritarios:</div>
+                <ul class="tips-list">
+                    <li><strong>Reorganización Laboral:</strong> Posterga o delega tareas no urgentes de la semana.</li>
+                    <li><strong>Límite Presencial/Virtual:</strong> Desactiva notificaciones laborales en tu teléfono el fin de semana.</li>
+                    <li><strong>Soporte Institucional:</strong> Consulta sobre los programas de bienestar y salud ocupacional de la universidad.</li>
+                </ul>`;
+        }
+    }
+
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
